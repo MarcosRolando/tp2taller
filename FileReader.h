@@ -10,14 +10,16 @@
 
 class FileReader {
 private:
+    std::string workersName, resourcesName;
     std::ifstream workersFile, resourcesFile;
-    unsigned int farmerAmount, lumberjackAmount, minerAmount;
-    unsigned int cookAmount, carpenterAmount, armourerAmount;
+    int farmerAmount, lumberjackAmount, minerAmount;
+    int cookAmount, carpenterAmount, armourerAmount;
 public:
     FileReader(std::string workersFile, std::string resourcesFile);
     void readWorkers();
 private:
-    void _processWorker(std::string& worker, size_t amount);
+    bool _validWorkerAmount();
+    void _processWorker(std::string& worker, int amount);
 };
 
 
