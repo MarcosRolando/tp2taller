@@ -2,20 +2,19 @@
 // Created by marcos on 7/5/20.
 //
 
-#ifndef TP2TALLER_FILEREADER_H
-#define TP2TALLER_FILEREADER_H
+#ifndef TP2TALLER_WORKERREADER_H
+#define TP2TALLER_WORKERREADER_H
 
-#include <iostream>
 #include <fstream>
 
-class FileReader {
+class WorkerReader {
 private:
-    std::string workersName, resourcesName;
-    std::ifstream workersFile, resourcesFile;
+    std::string workersName;
+    std::ifstream workersFile;
     int farmerAmount, lumberjackAmount, minerAmount;
     int cookAmount, carpenterAmount, armourerAmount;
 public:
-    FileReader(std::string workersFile, std::string resourcesFile);
+    explicit WorkerReader(std::string workersFile);
     void readWorkers();
     int getFarmerAmount();
     int getLumberjackAmount();
@@ -30,4 +29,4 @@ private:
 };
 
 
-#endif //TP2TALLER_FILEREADER_H
+#endif //TP2TALLER_WORKERREADER_H

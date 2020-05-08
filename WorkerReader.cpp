@@ -2,16 +2,13 @@
 // Created by marcos on 7/5/20.
 //
 
-#include "FileReader.h"
+#include "WorkerReader.h"
 #include "FileException.h"
 
-FileReader::FileReader(std::string workersFile, std::string resourcesFile) :
-            workersName(workersFile), resourcesName(resourcesFile),
-            workersFile(workersFile), resourcesFile(resourcesFile) {
+WorkerReader::WorkerReader(std::string workersFile) :
+            workersName(workersFile), workersFile(workersFile) {
     if (!this->workersFile.is_open())
         throw FileException(workersFile, NONEXISTENT_FILE);
-    else if (!this->resourcesFile.is_open())
-        throw FileException(resourcesFile, NONEXISTENT_FILE);
     this->armourerAmount = -1;
     this->carpenterAmount = -1;
     this->cookAmount = -1;
@@ -20,7 +17,7 @@ FileReader::FileReader(std::string workersFile, std::string resourcesFile) :
     this->farmerAmount = -1;
 }
 
-void FileReader::readWorkers() {
+void WorkerReader::readWorkers() {
     std::string worker, sAmount;
     int amount;
     while (!workersFile.eof()) {
@@ -37,12 +34,12 @@ void FileReader::readWorkers() {
                                                             BAD_FILE);
 }
 
-bool FileReader::_validWorkerAmount() const {
+bool WorkerReader::_validWorkerAmount() const {
     return !(farmerAmount < 0 || lumberjackAmount < 0 || minerAmount < 0 ||
              cookAmount < 0 || carpenterAmount < 0 || armourerAmount < 0);
 }
 
-void FileReader::_processWorker(const std::string& worker, int amount) {
+void WorkerReader::_processWorker(const std::string& worker, int amount) {
     if (worker == "Agricultores") this->farmerAmount = amount;
     else if (worker == "Leniadores") this->lumberjackAmount = amount;
     else if (worker == "Mineros") this->minerAmount = amount;
@@ -52,26 +49,26 @@ void FileReader::_processWorker(const std::string& worker, int amount) {
     else throw FileException(this->workersName, BAD_FILE);
 }
 
-int FileReader::getFarmerAmount() {
+int WorkerReader::getFarmerAmount() {
     return this->farmerAmount;
 }
 
-int FileReader::getLumberjackAmount() {
+int WorkerReader::getLumberjackAmount() {
     return this->lumberjackAmount;
 }
 
-int FileReader::getMinerAmount() {
+int WorkerReader::getMinerAmount() {
     return this->minerAmount;
 }
 
-int FileReader::getCookAmount() {
+int WorkerReader::getCookAmount() {
     return this->cookAmount;
 }
 
-int FileReader::getCarpenterAmount() {
+int WorkerReader::getCarpenterAmount() {
     return this->carpenterAmount;
 }
 
-int FileReader::getArmourerAmount() {
+int WorkerReader::getArmourerAmount() {
     return this->armourerAmount;
 }

@@ -8,8 +8,8 @@
 #include <exception>
 #include <iostream>
 
-#define NONEXISTENT_FILE 1
-#define BAD_FILE 2
+const int NONEXISTENT_FILE = 1;
+const int BAD_FILE = 2;
 
 class FileException : public std::exception {
 private:
