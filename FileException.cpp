@@ -6,14 +6,14 @@
 #include <iostream>
 
 void FileException::printError() {
-    switch (this->eType) {
+    switch (eType) {
         case NONEXISTENT_FILE:
-            std::cout << "El archivo " << this->fileName << " no existe, asegurese que "
+            std::cout << "El archivo " << fileName << " no existe, asegurese que "
                                                             "esta en el directorio del"
                                                             " ejecutable" << std::endl;
             break;
         case BAD_FILE:
-            std::cout << "El archivo " << this->fileName << " no tiene los "
+            std::cout << "El archivo " << fileName << " no tiene los "
                                                             "parametros necesar"
                                                             "ios" << std::endl;
             break;

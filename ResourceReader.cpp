@@ -8,19 +8,19 @@
 ResourceReader::ResourceReader(std::string resourceFile) : resourceFile(resourceFile) {
     if (!this->resourceFile.is_open())
         throw FileException(resourceFile, NONEXISTENT_FILE);
-    this->length = 0;
-    this->position = 0;
+    length = 0;
+    position = 0;
 }
 
 char ResourceReader::readResource() {
-    if (!resourceFile.eof() || (this->position < this->length)) {
-        if (!(this->position < this->length)){
-            std::getline(this->resourceFile, this->resources);
-            this->length = resources.length();
-            this->position = 0;
+    if (!resourceFile.eof() || (position < length)) {
+        if (position >= length){
+            std::getline(resourceFile, resources);
+            length = resources.length();
+            position = 0;
         }
         char resource = resources[position];
-        this->position++;
+        position++;
         return resource;
     } else {
         return 0;

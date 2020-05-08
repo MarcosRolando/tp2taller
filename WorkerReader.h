@@ -16,12 +16,12 @@ private:
 public:
     explicit WorkerReader(std::string workersFile);
     void readWorkers();
-    int getFarmerAmount();
-    int getLumberjackAmount();
-    int getMinerAmount();
-    int getCookAmount();
-    int getCarpenterAmount();
-    int getArmourerAmount();
+    int getFarmerAmount() const;
+    int getLumberjackAmount() const;
+    int getMinerAmount() const;
+    int getCookAmount() const;
+    int getCarpenterAmount() const;
+    int getArmourerAmount() const;
 
 private:
     bool _validWorkerAmount() const;
