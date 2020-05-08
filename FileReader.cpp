@@ -51,3 +51,27 @@ void FileReader::_processWorker(const std::string& worker, int amount) {
     else if (worker == "Armeros") this->armourerAmount = amount;
     else throw FileException(this->workersName, BAD_FILE);
 }
+
+int FileReader::getFarmerAmount() {
+    return this->farmerAmount;
+}
+
+int FileReader::getLumberjackAmount() {
+    return this->lumberjackAmount;
+}
+
+int FileReader::getMinerAmount() {
+    return this->minerAmount;
+}
+
+int FileReader::getCookAmount() {
+    return this->cookAmount;
+}
+
+int FileReader::getCarpenterAmount() {
+    return this->carpenterAmount;
+}
+
+int FileReader::getArmourerAmount() {
+    return this->armourerAmount;
+}

@@ -17,6 +17,13 @@ private:
 public:
     FileReader(std::string workersFile, std::string resourcesFile);
     void readWorkers();
+    int getFarmerAmount();
+    int getLumberjackAmount();
+    int getMinerAmount();
+    int getCookAmount();
+    int getCarpenterAmount();
+    int getArmourerAmount();
+
 private:
     bool _validWorkerAmount() const;
     void _processWorker(const std::string& worker, int amount);
