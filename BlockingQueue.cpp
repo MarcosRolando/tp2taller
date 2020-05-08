@@ -3,6 +3,7 @@
 //
 
 #include "BlockingQueue.h"
+#include <iostream>
 
 BlockingQueue::BlockingQueue() {
     finishedAdding = false;
@@ -28,6 +29,8 @@ Resource* BlockingQueue::pop() {
 }
 
 void BlockingQueue::doneAdding() {
+    std::unique_lock<std::mutex> lock(mtx);
     finishedAdding = true;
+    cv.notify_all();
 }
 
