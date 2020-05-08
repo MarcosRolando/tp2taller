@@ -1,6 +1,12 @@
-#include <iostream>
+#include "FileReader.h"
+#include "NonExistentFileException.h"
 
 int main() {
-    std::cout << "Hello, World!" << std::endl;
+    try {
+        FileReader reader("trabajadores.cfg", "mapa.txt");
+        reader.readWorkers();
+    } catch (NonExistentFileException& e) {
+        e.printError();
+    }
     return 0;
 }
