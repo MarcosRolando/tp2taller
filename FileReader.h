@@ -18,8 +18,8 @@ public:
     FileReader(std::string workersFile, std::string resourcesFile);
     void readWorkers();
 private:
-    bool _validWorkerAmount();
-    void _processWorker(std::string& worker, int amount);
+    bool _validWorkerAmount() const;
+    void _processWorker(const std::string& worker, int amount);
 };
 
 

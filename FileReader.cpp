@@ -37,12 +37,12 @@ void FileReader::readWorkers() {
                                                             BAD_FILE);
 }
 
-bool FileReader::_validWorkerAmount() {
+bool FileReader::_validWorkerAmount() const {
     return !(farmerAmount < 0 || lumberjackAmount < 0 || minerAmount < 0 ||
              cookAmount < 0 || carpenterAmount < 0 || armourerAmount < 0);
 }
 
-void FileReader::_processWorker(std::string& worker, int amount) {
+void FileReader::_processWorker(const std::string& worker, int amount) {
     if (worker == "Agricultores") this->farmerAmount = amount;
     else if (worker == "Leniadores") this->lumberjackAmount = amount;
     else if (worker == "Mineros") this->minerAmount = amount;
