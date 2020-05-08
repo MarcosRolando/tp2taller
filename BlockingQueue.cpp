@@ -3,7 +3,6 @@
 //
 
 #include "BlockingQueue.h"
-#include <iostream>
 
 BlockingQueue::BlockingQueue() {
     finishedAdding = false;
@@ -26,6 +25,10 @@ Resource* BlockingQueue::pop() {
         return element;
     }
     return nullptr;
+}
+
+bool BlockingQueue::empty() {
+    return finishedAdding;
 }
 
 void BlockingQueue::doneAdding() {

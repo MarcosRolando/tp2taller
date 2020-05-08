@@ -20,6 +20,7 @@ public:
     BlockingQueue();
     void push(Resource* element);
     Resource* pop();
+    bool empty();
     void doneAdding();
 };
 

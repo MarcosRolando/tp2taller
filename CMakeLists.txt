@@ -2,7 +2,11 @@ cmake_minimum_required(VERSION 3.16)
 project(tp2taller)
 
 add_executable(tp2taller main.cpp WorkerReader.cpp WorkerReader.h
-        FileException.cpp FileException.h King.cpp King.h ResourceReader.cpp ResourceReader.h Resource.cpp Resource.h Wheat.cpp Wheat.h Wood.cpp Wood.h Coal.cpp Coal.h Iron.cpp Iron.h BlockingQueue.cpp BlockingQueue.h)
+        FileException.cpp FileException.h King.cpp King.h ResourceReader.cpp
+        ResourceReader.h Resource.cpp Resource.h Wheat.cpp Wheat.h Wood.cpp
+        Wood.h Coal.cpp Coal.h Iron.cpp Iron.h BlockingQueue.cpp BlockingQueue.h
+        Gatherer.cpp Gatherer.h Farmer.cpp Farmer.h Lumberjack.cpp Lumberjack.h
+        Miner.cpp Miner.h Inventory.cpp Inventory.h)
 
 target_compile_options (tp2taller PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
         -O0 -ggdb -DDEBUG -fno-inline)
