@@ -9,7 +9,7 @@ void Gatherer::work() {
     while (!resources.empty()) {
         Resource* resource = resources.pop();
         if (resource != nullptr) {
-            usleep(50);
+            usleep(50000);
             inventory.store(resource);
         }
     }
