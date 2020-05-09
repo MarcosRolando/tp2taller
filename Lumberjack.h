@@ -8,7 +8,9 @@
 #include "Gatherer.h"
 
 class Lumberjack : public Gatherer {
-
+public:
+    Lumberjack(Inventory& inventory, BlockingQueue& resources) :
+                                        Gatherer(inventory, resources) {};
 };
 
 

@@ -16,10 +16,10 @@ void BlockingQueue::push(Resource* element) {
 
 Resource* BlockingQueue::pop() {
     std::unique_lock<std::mutex> lock(mtx);
-    if (!finishedAdding) {
-        while (queue.empty()) {
-            cv.wait(lock);
-        }
+    while (queue.empty() && !finishedAdding) {
+        cv.wait(lock);
+    }
+    if (!queue.empty()) {
         Resource* element = queue.front();
         queue.pop();
         return element;
@@ -28,7 +28,7 @@ Resource* BlockingQueue::pop() {
 }
 
 bool BlockingQueue::empty() {
-    return finishedAdding;
+    return (finishedAdding && queue.empty());
 }
 
 void BlockingQueue::doneAdding() {

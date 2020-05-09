@@ -8,6 +8,7 @@
 #include "Resource.h"
 
 class Wheat : public Resource {
+
 };
 
 
