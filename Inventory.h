@@ -9,7 +9,7 @@
 
 class Inventory {
 public:
-    void store(Resource* resource);
+    void store(Resource resource);
 };
 
 

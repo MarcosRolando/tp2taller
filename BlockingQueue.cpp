@@ -8,23 +8,23 @@ BlockingQueue::BlockingQueue() {
     finishedAdding = false;
 }
 
-void BlockingQueue::push(Resource* element) {
+void BlockingQueue::push(Resource element) {
     std::unique_lock<std::mutex> lock(mtx);
     queue.push(element);
     cv.notify_all();
 }
 
-Resource* BlockingQueue::pop() {
+Resource BlockingQueue::pop() {
     std::unique_lock<std::mutex> lock(mtx);
     while (queue.empty() && !finishedAdding) {
         cv.wait(lock);
     }
     if (!queue.empty()) {
-        Resource* element = queue.front();
+        Resource element = queue.front();
         queue.pop();
         return element;
     }
-    return nullptr;
+    return Mud; //la alternativa era tirar una exception que es mas sidoso todavia, esto seria un nullptr
 }
 
 bool BlockingQueue::empty() {

@@ -4,6 +4,6 @@
 
 #include "Inventory.h"
 
-void Inventory::store(Resource *resource) {
+void Inventory::store(Resource resource) {
     //do nothing
 }

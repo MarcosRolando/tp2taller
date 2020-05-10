@@ -12,14 +12,14 @@
 
 class BlockingQueue {
 private:
-    std::queue<Resource*> queue;
+    std::queue<Resource> queue;
     std::mutex mtx;
     std::condition_variable cv;
     bool finishedAdding;
 public:
     BlockingQueue();
-    void push(Resource* element);
-    Resource* pop();
+    void push(Resource element);
+    Resource pop();
     bool empty();
     void doneAdding();
 };
