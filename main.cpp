@@ -13,7 +13,7 @@ int main() {
     std::vector<BlockingQueue> resources(3);
     std::vector<Gatherer*> gatherer(6);
     std::vector<std::thread*> thread(6);
-    for (int i = 0; i < 5; ++i) {
+    for (int i = 0; i < 6; ++i) {
         if (i < 2) {
             gatherer[i] = new Gatherer(inventory, resources[0]); //farmers
         } else if (i < 4) {
@@ -23,6 +23,18 @@ int main() {
         }
         thread[i] = new std::thread(&Gatherer::work, std::ref(gatherer[i]));
     }
+    resources[0].push(Wheat);
+    resources[0].push(Wheat);
+    resources[0].push(Wheat);
+    resources[2].push(Coal);
+    resources[2].push(Coal);
+    resources[2].push(Coal);
+    resources[2].push(Iron);
+    resources[2].push(Iron);
+    resources[2].push(Iron);
+    resources[1].push(Wood);
+    resources[1].push(Wood);
+    resources[1].push(Wood);
     for (int i = 0; i < 6; ++i) {
         thread[i]->join();
     }
