@@ -6,9 +6,15 @@
 #define TP2TALLER_INVENTORY_H
 
 #include "Resource.h"
+#include <mutex>
+#include <condition_variable>
 
 class Inventory {
+private:
+    unsigned int wheat, coal, wood, iron;
+    std::mutex wheatMtx, coalMtx, woodMtx, ironMtx;
 public:
+    Inventory();
     void store(Resource resource);
 };
 
