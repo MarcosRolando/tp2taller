@@ -16,6 +16,7 @@ private:
 public:
     Inventory();
     void store(Resource resource);
+    void print();
 };
 
 

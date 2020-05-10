@@ -3,6 +3,7 @@
 //
 
 #include "Inventory.h"
+#include <iostream>
 
 Inventory::Inventory() {
     wheat = 0;
@@ -25,5 +26,12 @@ void Inventory::store(Resource resource) { //switch no me deja usar el unique lo
         std::unique_lock<std::mutex> l(ironMtx);
         iron++;
     }
+}
+
+void Inventory::print() {
+    std::cout << "Wheat: " << wheat << std::endl;
+    std::cout << "Wood: " << wood << std::endl;
+    std::cout << "Coal: " << coal << std::endl;
+    std::cout << "Iron: " << iron << std::endl;
 }
 
