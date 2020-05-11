@@ -74,15 +74,23 @@ bool Inventory::getArmourerResources() {
 }
 
 void Inventory::farmerFinished() {
+    std::unique_lock<std::mutex> l(mutexProductor);
     finishedFarmer = true;
+    cookCV.notify_all();
 }
 
 void Inventory::lumberjackFinished() {
+    std::unique_lock<std::mutex> l(mutexProductor);
     finishedLumberjack = true;
+    carpenterCV.notify_all();
 }
 
 void Inventory::minerFinished() {
+    std::unique_lock<std::mutex> l(mutexProductor);
     finishedMiner = true;
+    cookCV.notify_all();
+    carpenterCV.notify_all();
+    armourerCV.notify_all();
 }
 
 /*

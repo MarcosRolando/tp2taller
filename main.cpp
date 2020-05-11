@@ -48,7 +48,7 @@ int main() {
     for (int i = 0; i < 10; ++i) {
         resources[1].push(Wood);
     }
-    for (int i = 0; i < 9; ++i) { //CON 10 PARA ABAJO ROMPE
+    for (int i = 0; i < 10; ++i) { //CON 10 PARA ABAJO ROMPE
         resources[2].push(Coal);
     }
     for (int i = 0; i < 10; ++i) {
