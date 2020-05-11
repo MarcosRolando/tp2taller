@@ -42,16 +42,16 @@ int main() {
         miner[i] = new Miner(inventory, resources[2]); //miners
         thread[i+17] = new std::thread(&Miner::work, std::ref(miner[i]));
     }
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 3; ++i) {
         resources[0].push(Wheat);
     }
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 1; ++i) {
         resources[1].push(Wood);
     }
-    for (int i = 0; i < 10; ++i) { //CON 10 PARA ABAJO ROMPE
+    for (int i = 0; i < 1; ++i) {
         resources[2].push(Coal);
     }
-    for (int i = 0; i < 10; ++i) {
+    for (int i = 0; i < 1; ++i) {
         resources[2].push(Iron);
     }
     resources[0].doneAdding();
