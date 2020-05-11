@@ -13,7 +13,7 @@
 class Inventory {
 private:
     std::atomic_uint wheat, coal, wood, iron;
-    std::atomic_bool finishedFarmer, finishedLumberjack, finishedMiner;
+    std::atomic_bool finishedAdding;
     std::mutex mutexProductor;
     std::condition_variable cookCV, carpenterCV, armourerCV;
 public:
@@ -22,9 +22,7 @@ public:
     bool getCookingResources();
     bool getCarpenterResources();
     bool getArmourerResources();
-    void farmerFinished();
-    void lumberjackFinished();
-    void minerFinished();
+    void doneAdding();
     //void print();
 private:
     void _notifyProducers();

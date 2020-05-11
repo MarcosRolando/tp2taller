@@ -10,9 +10,7 @@ Inventory::Inventory() {
     coal = 0;
     wood = 0;
     iron = 0;
-    finishedFarmer = false;
-    finishedLumberjack = false;
-    finishedMiner = false;
+    finishedAdding = false;
 }
 
 void Inventory::_notifyProducers() {
@@ -37,7 +35,7 @@ void Inventory::store(Resource resource) { //switch no me deja usar el unique lo
 //TENGO UN BUG, EL MINERO CAPAZ TERMINA Y ME ALCANZA LA COAL PERO EL FARMER NO TERMINO Y YO ME VOY IGUAL ARREGLAR!!!! lo mismo para el resto
 bool Inventory::getCookingResources() {
     std::unique_lock<std::mutex> lock(mutexProductor);
-    while ( (wheat < 2 || coal < 1) && (!finishedFarmer || !finishedMiner) ) {
+    while ( (wheat < 2 || coal < 1) && !finishedAdding) {
         cookCV.wait(lock);
     }
     if (wheat >= 2 && coal >= 1) {
@@ -50,7 +48,7 @@ bool Inventory::getCookingResources() {
 
 bool Inventory::getCarpenterResources() {
     std::unique_lock<std::mutex> lock(mutexProductor);
-    while ( (wood < 3 || iron < 1) && (!finishedLumberjack || ! finishedMiner)) {
+    while ( (wood < 3 || iron < 1) && !finishedAdding) {
         carpenterCV.wait(lock);
     }
     if (wood >= 3 && iron >= 1) {
@@ -63,7 +61,7 @@ bool Inventory::getCarpenterResources() {
 
 bool Inventory::getArmourerResources() {
     std::unique_lock<std::mutex> lock(mutexProductor);
-    while ( (coal < 2 || iron < 2) && !finishedMiner) {
+    while ( (coal < 2 || iron < 2) && !finishedAdding) {
         armourerCV.wait(lock);
     }
     if (coal >= 2 && iron >= 2) {
@@ -74,25 +72,14 @@ bool Inventory::getArmourerResources() {
     return false;
 }
 
-void Inventory::farmerFinished() {
+void Inventory::doneAdding() {
     std::unique_lock<std::mutex> l(mutexProductor);
-    finishedFarmer = true;
-    cookCV.notify_all();
-}
-
-void Inventory::lumberjackFinished() {
-    std::unique_lock<std::mutex> l(mutexProductor);
-    finishedLumberjack = true;
-    carpenterCV.notify_all();
-}
-
-void Inventory::minerFinished() {
-    std::unique_lock<std::mutex> l(mutexProductor);
-    finishedMiner = true;
-    cookCV.notify_all();
-    carpenterCV.notify_all();
+    finishedAdding = true;
     armourerCV.notify_all();
+    carpenterCV.notify_all();
+    cookCV.notify_all();
 }
+
 
 /*
 void Inventory::print() {
