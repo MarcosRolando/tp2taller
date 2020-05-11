@@ -3,10 +3,11 @@
 //
 
 #include "Carpenter.h"
+#include <unistd.h>
 
 void Carpenter::work() {
     while (inventory.getCarpenterResources()) {
-        //dormir 60 ms
-        //guardar puntos de beneficio
+        usleep(60000);
+        points.incrementPoints(2);
     }
 }

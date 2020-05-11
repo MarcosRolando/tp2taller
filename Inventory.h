@@ -22,6 +22,9 @@ public:
     bool getCookingResources();
     bool getCarpenterResources();
     bool getArmourerResources();
+    void farmerFinished();
+    void lumberjackFinished();
+    void minerFinished();
     //void print();
 private:
     void _notifyProducers();

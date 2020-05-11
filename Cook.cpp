@@ -3,10 +3,11 @@
 //
 
 #include "Cook.h"
+#include <unistd.h>
 
 void Cook::work() {
     while (inventory.getCookingResources()) {
-        //dormir 60 ms
-        //guardar puntos de beneficio
+        usleep(60000);
+        points.incrementPoints(5);
     }
 }

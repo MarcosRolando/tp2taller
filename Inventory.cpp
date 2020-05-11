@@ -73,6 +73,18 @@ bool Inventory::getArmourerResources() {
     return false;
 }
 
+void Inventory::farmerFinished() {
+    finishedFarmer = true;
+}
+
+void Inventory::lumberjackFinished() {
+    finishedLumberjack = true;
+}
+
+void Inventory::minerFinished() {
+    finishedMiner = true;
+}
+
 /*
 void Inventory::print() {
     std::cout << "Wheat: " << wheat << std::endl;

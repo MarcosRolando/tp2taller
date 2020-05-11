@@ -9,8 +9,9 @@
 #include "BlockingQueue.h"
 
 class Gatherer {
-private:
+protected:
     Inventory& inventory;
+private:
     BlockingQueue& resources;
 public:
     Gatherer(Inventory& inventory, BlockingQueue& resources) :

@@ -3,10 +3,11 @@
 //
 
 #include "Armourer.h"
+#include <unistd.h>
 
 void Armourer::work() {
     while (inventory.getArmourerResources()) {
-        //dormir 60 ms
-        //guardar puntos de beneficio
+        usleep(60000);
+        points.incrementPoints(3);
     }
 }
