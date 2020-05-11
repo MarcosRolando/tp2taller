@@ -37,7 +37,7 @@ void Inventory::store(Resource resource) { //switch no me deja usar el unique lo
 //TENGO UN BUG, EL MINERO CAPAZ TERMINA Y ME ALCANZA LA COAL PERO EL FARMER NO TERMINO Y YO ME VOY IGUAL ARREGLAR!!!! lo mismo para el resto
 bool Inventory::getCookingResources() {
     std::unique_lock<std::mutex> lock(mutexProductor);
-    while ( (wheat < 2 || coal < 1) && !finishedFarmer && !finishedMiner) {
+    while ( (wheat < 2 || coal < 1) && (!finishedFarmer || !finishedMiner) ) {
         cookCV.wait(lock);
     }
     if (wheat >= 2 && coal >= 1) {
@@ -50,7 +50,7 @@ bool Inventory::getCookingResources() {
 
 bool Inventory::getCarpenterResources() {
     std::unique_lock<std::mutex> lock(mutexProductor);
-    while ( (wood < 3 || iron < 1) && !finishedLumberjack && ! finishedMiner) {
+    while ( (wood < 3 || iron < 1) && (!finishedLumberjack || ! finishedMiner)) {
         carpenterCV.wait(lock);
     }
     if (wood >= 3 && iron >= 1) {
