@@ -2,10 +2,10 @@
 // Created by marcos on 11/5/20.
 //
 
-#include "Cook.h"
+#include "Armourer.h"
 
-void Cook::work() {
-    while (inventory.getCookingResources()) {
+void Armourer::work() {
+    while (inventory.getArmourerResources()) {
         //dormir 60 ms
         //guardar puntos de beneficio
     }
