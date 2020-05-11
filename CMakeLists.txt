@@ -4,7 +4,7 @@ project(tp2taller)
 add_executable(tp2taller main.cpp WorkerReader.cpp WorkerReader.h
         FileException.cpp FileException.h King.cpp King.h ResourceReader.cpp
         ResourceReader.h Resource.h BlockingQueue.cpp BlockingQueue.h
-        Gatherer.cpp Gatherer.h Inventory.cpp Inventory.h Resource.h Cook.cpp Cook.h Carpenter.cpp Carpenter.h Armourer.cpp Armourer.h)
+        Gatherer.cpp Gatherer.h Inventory.cpp Inventory.h Resource.h Cook.cpp Cook.h Carpenter.cpp Carpenter.h Armourer.cpp Armourer.h BenefitPoints.cpp BenefitPoints.h)
 
 target_compile_options (tp2taller PRIVATE -std=c++11 -Wall -Werror -pedantic -pedantic-errors
         -O0 -ggdb -DDEBUG -fno-inline)

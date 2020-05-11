@@ -6,12 +6,15 @@
 #define TP2TALLER_COOK_H
 
 #include "Inventory.h"
+#include "BenefitPoints.h"
 
 class Cook {
 private:
     Inventory& inventory;
+    BenefitPoints& points;
 public:
-    explicit Cook(Inventory& inventory) : inventory(inventory) {};
+    Cook(Inventory& inventory, BenefitPoints& points) :
+                                    inventory(inventory), points(points) {};
     void work();
 };
 

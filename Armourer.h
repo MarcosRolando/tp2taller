@@ -6,12 +6,15 @@
 #define TP2TALLER_ARMOURER_H
 
 #include "Inventory.h"
+#include "BenefitPoints.h"
 
 class Armourer {
 private:
     Inventory& inventory;
+    BenefitPoints& points;
 public:
-    explicit Armourer(Inventory& inventory) : inventory(inventory) {};
+    Armourer(Inventory& inventory, BenefitPoints& points) :
+                                    inventory(inventory), points(points) {};
     void work();
 };
 

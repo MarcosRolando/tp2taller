@@ -6,12 +6,15 @@
 #define TP2TALLER_CARPENTER_H
 
 #include "Inventory.h"
+#include "BenefitPoints.h"
 
 class Carpenter {
 private:
     Inventory& inventory;
+    BenefitPoints& points;
 public:
-    explicit Carpenter(Inventory& inventory) : inventory(inventory) {};
+    Carpenter(Inventory& inventory, BenefitPoints& points) :
+                                    inventory(inventory), points(points) {};
     void work();
 };
 
