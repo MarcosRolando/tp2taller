@@ -17,6 +17,7 @@ public:
     Gatherer(Inventory& inventory, BlockingQueue& resources) :
                                 inventory(inventory), resources(resources) {};
     void work();
+    virtual ~Gatherer() = default;
 };
 
 
