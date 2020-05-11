@@ -8,15 +8,23 @@
 #include "Resource.h"
 #include <mutex>
 #include <condition_variable>
+#include <atomic>
 
 class Inventory {
 private:
-    unsigned int wheat, coal, wood, iron;
-    std::mutex wheatMtx, coalMtx, woodMtx, ironMtx;
+    std::atomic_uint wheat, coal, wood, iron;
+    bool finishedFarmer, finishedLumberjack, finishedMiner;
+    std::mutex mutexProductor;
+    std::condition_variable cookCV, carpenterCV, armourerCV;
 public:
     Inventory();
     void store(Resource resource);
-    void print();
+    bool getCookingResources();
+    bool getCarpenterResources();
+    bool getArmourerResources();
+    //void print();
+private:
+    void _notifyProducers();
 };
 
 
