@@ -39,9 +39,9 @@ void King::_spawnGatherers() {
 }
 
 void King::_spawnProducers() {
-    _assignProducers(wReader.getFarmerAmount(), Cook::newCook);
-    _assignProducers(wReader.getFarmerAmount(), Carpenter::newCarpenter);
-    _assignProducers(wReader.getFarmerAmount(), Armourer::newArmourer);
+    _assignProducers(wReader.getCookAmount(), Cook::newCook);
+    _assignProducers(wReader.getCarpenterAmount(), Carpenter::newCarpenter);
+    _assignProducers(wReader.getArmourerAmount(), Armourer::newArmourer);
 }
 
 void King::_sendResource(char resource) {
