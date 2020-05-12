@@ -7,3 +7,9 @@
 void BenefitPoints::incrementPoints(unsigned int newPoints) {
     points += newPoints;
 }
+
+void BenefitPoints::printPoints() {
+    std::cout << "Puntos de Beneficio acumulados: " << points << " \n";
+}
+
+

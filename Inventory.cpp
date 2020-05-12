@@ -80,12 +80,12 @@ void Inventory::doneAdding() {
     cookCV.notify_all();
 }
 
-
-/*
-void Inventory::print() {
-    std::cout << "Wheat: " << wheat << std::endl;
-    std::cout << "Wood: " << wood << std::endl;
-    std::cout << "Coal: " << coal << std::endl;
-    std::cout << "Iron: " << iron << std::endl;
+void Inventory::printStockLeft() {
+    std::cout << "Recursos restantes:\n"
+                 "- Trigo: " << wheat << " \n"
+                                         "- Madera: " << wood << " \n"
+                                                                 "- Carbon: " << coal << " \n"
+                 "- Hierro: " << iron << " \n"
+                 "\n";
 }
-*/
+

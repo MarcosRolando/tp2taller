@@ -60,9 +60,8 @@ void King::_sendResource(char resource) {
     }
 }
 
-void King::runKingdom() {
+void King::_runPeasants() {
     wReader.readWorkers();
-    char resource;
     _spawnGatherers();
     _spawnProducers();
     for (auto & gatherer : gatherers) {
@@ -71,6 +70,10 @@ void King::runKingdom() {
     for (auto & producer : producers) {
         producer->start();
     }
+}
+
+void King::_sendResources() {\
+    char resource;
     resource = rReader.readResource();
     while (resource != 0) {
         _sendResource(resource);
@@ -79,6 +82,11 @@ void King::runKingdom() {
     if (farmerResources != nullptr) farmerResources->doneAdding();
     if (lumberjackResources != nullptr) lumberjackResources->doneAdding();
     if (minerResources != nullptr) minerResources->doneAdding();
+}
+
+void King::runKingdom() {
+    _runPeasants();
+    _sendResources();
     for (auto & gatherer : gatherers) {
         gatherer.join();
     }
@@ -86,6 +94,7 @@ void King::runKingdom() {
     for (auto & producer : producers) {
         producer->join();
     }
+    inventory.printStockLeft();
     points.printPoints();
 }
 

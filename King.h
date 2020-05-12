@@ -31,6 +31,8 @@ private:
     void _spawnProducers();
     void _assignProducers(unsigned int amount, Producer* (*f) (Inventory&, BenefitPoints&));
     void _sendResource(char resource);
+    void _runPeasants();
+    void _sendResources();
 };
 
 

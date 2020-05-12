@@ -14,7 +14,7 @@ private:
 public:
     BenefitPoints() : points(0) {};
     void incrementPoints(unsigned int newPoints);
-    void printPoints() {std::cout << points << std::endl;}
+    void printPoints();
 };
 
 

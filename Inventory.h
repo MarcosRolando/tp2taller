@@ -23,7 +23,7 @@ public:
     bool getCarpenterResources();
     bool getArmourerResources();
     void doneAdding();
-    //void print();
+    void printStockLeft();
 private:
     void _notifyProducers();
 };
