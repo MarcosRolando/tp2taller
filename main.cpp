@@ -1,7 +1,7 @@
 #include "WorkerReader.h"
 #include "ResourceReader.h"
 #include "FileException.h"
-
+/*
 #include "Gatherer.h"
 #include "Inventory.h"
 #include "Resource.h"
@@ -12,8 +12,9 @@
 #include "Carpenter.h"
 #include "Armourer.h"
 #include "BenefitPoints.h"
-
-int main() {
+*/
+int main(int arc, char** args) {
+    /*
     Inventory inventory;
     BenefitPoints points;
     std::vector<BlockingQueue> resources(3);
@@ -91,7 +92,7 @@ int main() {
         delete thread[i];
     }
     points.printPoints();
-    /*
+
     try {
         WorkerReader wReader("trabajadores.cfg");
         wReader.readWorkers();

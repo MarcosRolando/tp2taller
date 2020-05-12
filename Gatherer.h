@@ -9,15 +9,13 @@
 #include "BlockingQueue.h"
 
 class Gatherer {
-protected:
-    Inventory& inventory;
 private:
+    Inventory& inventory;
     BlockingQueue& resources;
 public:
     Gatherer(Inventory& inventory, BlockingQueue& resources) :
                                 inventory(inventory), resources(resources) {};
     void work();
-    virtual ~Gatherer() = default;
 };
 
 

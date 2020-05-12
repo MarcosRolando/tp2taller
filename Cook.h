@@ -7,14 +7,12 @@
 
 #include "Inventory.h"
 #include "BenefitPoints.h"
+#include "Producer.h"
 
-class Cook {
-private:
-    Inventory& inventory;
-    BenefitPoints& points;
+class Cook : public Producer {
 public:
     Cook(Inventory& inventory, BenefitPoints& points) :
-                                    inventory(inventory), points(points) {};
+                                    Producer(inventory, points) {};
     void work();
 };
 

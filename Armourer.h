@@ -7,14 +7,12 @@
 
 #include "Inventory.h"
 #include "BenefitPoints.h"
+#include "Producer.h"
 
-class Armourer {
-private:
-    Inventory& inventory;
-    BenefitPoints& points;
+class Armourer : public Producer {
 public:
     Armourer(Inventory& inventory, BenefitPoints& points) :
-                                    inventory(inventory), points(points) {};
+                                    Producer(inventory, points) {};
     void work();
 };
 
