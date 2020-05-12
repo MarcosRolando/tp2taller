@@ -15,3 +15,7 @@ void Armourer::work() {
 void Armourer::run() {
     work();
 }
+
+Producer* Armourer::newArmourer(Inventory& inventory, BenefitPoints& points) {
+    return new Armourer(inventory, points);
+}

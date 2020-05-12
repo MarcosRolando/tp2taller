@@ -14,6 +14,7 @@ public:
     Carpenter(Inventory& inventory, BenefitPoints& points) :
                                     Producer(inventory, points) {};
     void work() override;
+    static Producer* newCarpenter(Inventory& inventory, BenefitPoints& points);
 private:
     void run() override;
 };

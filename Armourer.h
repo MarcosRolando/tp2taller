@@ -14,6 +14,7 @@ public:
     Armourer(Inventory& inventory, BenefitPoints& points) :
                                     Producer(inventory, points) {};
     void work() override;
+    static Producer* newArmourer(Inventory& inventory, BenefitPoints& points);
 private:
     void run() override;
 };

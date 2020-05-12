@@ -29,9 +29,7 @@ private:
     void _spawnGatherers();
     void _assignGatherers(unsigned int amount, BlockingQueue*& resources);
     void _spawnProducers();
-    void _spawnCooks();
-    void _spawnCarpenters();
-    void _spawnArmourers();
+    void _assignProducers(unsigned int amount, Producer* (*f) (Inventory&, BenefitPoints&));
     void _sendResource(char resource);
 };
 

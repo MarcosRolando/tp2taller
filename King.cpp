@@ -24,29 +24,10 @@ void King::_assignGatherers(unsigned int amount, BlockingQueue*& resources) {
     }
 }
 
-void King::_spawnCooks() {
-    unsigned int amount = wReader.getCookAmount();
+void King::_assignProducers(unsigned int amount, Producer* (*f) (Inventory&, BenefitPoints&)) {
     if (amount > 0) {
         for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(new Cook(inventory, points));
-        }
-    }
-}
-
-void King::_spawnCarpenters() {
-    unsigned int amount = wReader.getCarpenterAmount();
-    if (amount > 0) {
-        for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(new Carpenter(inventory, points));
-        }
-    }
-}
-
-void King::_spawnArmourers() {
-    unsigned int amount = wReader.getArmourerAmount();
-    if (amount > 0) {
-        for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(new Armourer(inventory, points));
+            producers.emplace_back(f(inventory, points));
         }
     }
 }
@@ -58,9 +39,9 @@ void King::_spawnGatherers() {
 }
 
 void King::_spawnProducers() {
-    _spawnCooks();
-    _spawnCarpenters();
-    _spawnArmourers();
+    _assignProducers(wReader.getFarmerAmount(), Cook::newCook);
+    _assignProducers(wReader.getFarmerAmount(), Carpenter::newCarpenter);
+    _assignProducers(wReader.getFarmerAmount(), Armourer::newArmourer);
 }
 
 void King::_sendResource(char resource) {
@@ -116,5 +97,6 @@ King::~King() {
     delete lumberjackResources;
     delete minerResources;
 }
+
 
 

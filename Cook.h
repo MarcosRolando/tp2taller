@@ -14,6 +14,7 @@ public:
     Cook(Inventory& inventory, BenefitPoints& points) :
                                     Producer(inventory, points) {};
     void work() override;
+    static Producer* newCook(Inventory& inventory, BenefitPoints& points);
 private:
     void run() override;
 };

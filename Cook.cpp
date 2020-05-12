@@ -15,3 +15,7 @@ void Cook::work() {
 void Cook::run() {
     work();
 }
+
+Producer *Cook::newCook(Inventory &inventory, BenefitPoints &points) {
+    return new Cook(inventory, points);
+}

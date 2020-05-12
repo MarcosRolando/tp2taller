@@ -15,3 +15,7 @@ void Carpenter::work() {
 void Carpenter::run() {
     work();
 }
+
+Producer *Carpenter::newCarpenter(Inventory &inventory, BenefitPoints &points) {
+    return new Carpenter(inventory, points);
+}
