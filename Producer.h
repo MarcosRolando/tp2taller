@@ -9,7 +9,7 @@
 #include "BenefitPoints.h"
 #include "Thread.h"
 
-class Producer {
+class Producer : public Thread {
 protected:
     Inventory& inventory;
     BenefitPoints& points;
@@ -17,7 +17,7 @@ public:
     Producer(Inventory& inventory, BenefitPoints& points) : inventory(inventory),
                                                              points(points) {};
     virtual void work() = 0;
-    virtual void run() = 0;
+    void run() override = 0;
     virtual ~Producer() = default;
 };
 

@@ -13,7 +13,10 @@
 #include "Armourer.h"
 #include "BenefitPoints.h"
 */
-int main(int arc, char** args) {
+#include "King.h"
+int main(int arc, char** argv) {
+    King king("trabajadores.cfg", "mapa.txt");
+    king.runKingdom();
     /*
     Inventory inventory;
     BenefitPoints points;

@@ -12,6 +12,7 @@ private:
     std::thread thread;
 public:
     void start();
+    void join();
     virtual void run() = 0;
 };
 

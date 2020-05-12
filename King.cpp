@@ -24,10 +24,29 @@ void King::_assignGatherers(unsigned int amount, BlockingQueue*& resources) {
     }
 }
 
-void King::_assignProducers(unsigned int amount, Producer* producer) {
+void King::_spawnCooks() {
+    unsigned int amount = wReader.getCookAmount();
     if (amount > 0) {
         for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(producer);
+            producers.emplace_back(new Cook(inventory, points));
+        }
+    }
+}
+
+void King::_spawnCarpenters() {
+    unsigned int amount = wReader.getCarpenterAmount();
+    if (amount > 0) {
+        for (unsigned i = 0; i < amount; ++i) {
+            producers.emplace_back(new Carpenter(inventory, points));
+        }
+    }
+}
+
+void King::_spawnArmourers() {
+    unsigned int amount = wReader.getArmourerAmount();
+    if (amount > 0) {
+        for (unsigned i = 0; i < amount; ++i) {
+            producers.emplace_back(new Armourer(inventory, points));
         }
     }
 }
@@ -39,9 +58,9 @@ void King::_spawnGatherers() {
 }
 
 void King::_spawnProducers() {
-    _assignProducers(wReader.getCookAmount(), new Cook(inventory, points));
-    _assignProducers(wReader.getCarpenterAmount(), new Carpenter(inventory, points));
-    _assignProducers(wReader.getArmourerAmount(), new Armourer(inventory, points));
+    _spawnCooks();
+    _spawnCarpenters();
+    _spawnArmourers();
 }
 
 void King::_sendResource(char resource) {
@@ -61,22 +80,38 @@ void King::_sendResource(char resource) {
 }
 
 void King::runKingdom() {
+    wReader.readWorkers();
     char resource;
     _spawnGatherers();
     _spawnProducers();
-    //disparo los threads
+    for (auto & gatherer : gatherers) {
+        gatherer.start();
+    }
+    for (auto & producer : producers) {
+        producer->start();
+    }
     resource = rReader.readResource();
     while (resource != 0) {
         _sendResource(resource);
         resource = rReader.readResource();
     }
-    //joineo los recolectores
+    if (farmerResources != nullptr) farmerResources->doneAdding();
+    if (lumberjackResources != nullptr) lumberjackResources->doneAdding();
+    if (minerResources != nullptr) minerResources->doneAdding();
+    for (auto & gatherer : gatherers) {
+        gatherer.join();
+    }
     inventory.doneAdding();
-    //joineo los productores
+    for (auto & producer : producers) {
+        producer->join();
+    }
     points.printPoints();
 }
 
 King::~King() {
+    for (auto & producer : producers) {
+        delete producer;
+    }
     delete farmerResources;
     delete lumberjackResources;
     delete minerResources;

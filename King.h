@@ -24,13 +24,15 @@ private:
 public:
     King(std::string workerFile, std::string resourceFile);
     void runKingdom(); //seria el Run del rey pero es un nombre mas epico
+    ~King();
 private:
     void _spawnGatherers();
     void _assignGatherers(unsigned int amount, BlockingQueue*& resources);
     void _spawnProducers();
-    void _assignProducers(unsigned int amount, Producer* producer);
+    void _spawnCooks();
+    void _spawnCarpenters();
+    void _spawnArmourers();
     void _sendResource(char resource);
-    ~King();
 };
 
 

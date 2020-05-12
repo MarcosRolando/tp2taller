@@ -16,9 +16,8 @@ private:
 public:
     Gatherer(Inventory& inventory, BlockingQueue& resources) :
                                 inventory(inventory), resources(resources) {};
-    void work();
-private:
     void run() override;
+    void work();
 };
 
 
