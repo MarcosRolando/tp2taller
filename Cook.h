@@ -13,7 +13,9 @@ class Cook : public Producer {
 public:
     Cook(Inventory& inventory, BenefitPoints& points) :
                                     Producer(inventory, points) {};
-    void work();
+    void work() override;
+private:
+    void run() override;
 };
 
 

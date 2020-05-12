@@ -15,3 +15,7 @@ void Gatherer::work() {
         }
     }
 }
+
+void Gatherer::run() {
+    work();
+}

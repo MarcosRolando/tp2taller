@@ -13,7 +13,9 @@ class Armourer : public Producer {
 public:
     Armourer(Inventory& inventory, BenefitPoints& points) :
                                     Producer(inventory, points) {};
-    void work();
+    void work() override;
+private:
+    void run() override;
 };
 
 

@@ -3,3 +3,7 @@
 //
 
 #include "Producer.h"
+
+void Producer::run() {
+    work();
+}

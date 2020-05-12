@@ -11,3 +11,7 @@ void Cook::work() {
         points.incrementPoints(5);
     }
 }
+
+void Cook::run() {
+    work();
+}

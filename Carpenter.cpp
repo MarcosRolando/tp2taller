@@ -11,3 +11,7 @@ void Carpenter::work() {
         points.incrementPoints(2);
     }
 }
+
+void Carpenter::run() {
+    work();
+}

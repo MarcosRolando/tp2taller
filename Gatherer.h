@@ -7,8 +7,9 @@
 
 #include "Inventory.h"
 #include "BlockingQueue.h"
+#include "Thread.h"
 
-class Gatherer {
+class Gatherer : public Thread {
 private:
     Inventory& inventory;
     BlockingQueue& resources;
@@ -16,6 +17,8 @@ public:
     Gatherer(Inventory& inventory, BlockingQueue& resources) :
                                 inventory(inventory), resources(resources) {};
     void work();
+private:
+    void run() override;
 };
 
 

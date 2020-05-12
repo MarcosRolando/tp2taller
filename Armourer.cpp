@@ -11,3 +11,7 @@ void Armourer::work() {
         points.incrementPoints(3);
     }
 }
+
+void Armourer::run() {
+    work();
+}

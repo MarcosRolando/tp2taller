@@ -7,6 +7,7 @@
 
 #include "Inventory.h"
 #include "BenefitPoints.h"
+#include "Thread.h"
 
 class Producer {
 protected:
@@ -16,6 +17,7 @@ public:
     Producer(Inventory& inventory, BenefitPoints& points) : inventory(inventory),
                                                              points(points) {};
     virtual void work() = 0;
+    virtual void run() = 0;
     virtual ~Producer() = default;
 };
 
