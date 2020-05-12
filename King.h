@@ -18,20 +18,19 @@ private:
     ResourceReader rReader;
     Inventory inventory;
     BenefitPoints points;
+    BlockingQueue *farmerResources, *lumberjackResources, *minerResources;
     std::vector<Gatherer> gatherers;
     std::vector<Producer*> producers;
-    std::vector<BlockingQueue*> resources;
 public:
-    King(std::string workerFile, std::string resourceFile) : wReader(std::move(workerFile)),
-                                            rReader(std::move(resourceFile)) {};
+    King(std::string workerFile, std::string resourceFile);
     void runKingdom(); //seria el Run del rey pero es un nombre mas epico
 private:
     void _spawnGatherers();
-    void _assignGatherers(unsigned int amount);
+    void _assignGatherers(unsigned int amount, BlockingQueue*& resources);
     void _spawnProducers();
     void _assignProducers(unsigned int amount, Producer* producer);
-    void _assignCarpenters();
-    void _assignArmourers();
+    void _sendResource(char resource);
+    ~King();
 };
 
 
