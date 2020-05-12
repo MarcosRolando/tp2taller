@@ -16,29 +16,10 @@ void King::_assignGatherers(unsigned int amount) {
     }
 }
 
-void King::_assignCooks() {
-    unsigned int amount = wReader.getCookAmount();
+void King::_assignProducers(unsigned int amount, Producer* producer) {
     if (amount > 0) {
         for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(new Cook(inventory, points));
-        }
-    }
-}
-
-void King::_assignCarpenters() {
-    unsigned int amount = wReader.getCarpenterAmount();
-    if (amount > 0) {
-        for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(new Carpenter(inventory, points));
-        }
-    }
-}
-
-void King::_assignArmourers() {
-    unsigned int amount = wReader.getArmourerAmount();
-    if (amount > 0) {
-        for (unsigned i = 0; i < amount; ++i) {
-            producers.emplace_back(new Armourer(inventory, points));
+            producers.emplace_back(producer);
         }
     }
 }
@@ -50,9 +31,9 @@ void King::_spawnGatherers() {
 }
 
 void King::_spawnProducers() {
-    _assignCooks();
-    _assignCarpenters();
-    _assignArmourers();
+    _assignProducers(wReader.getCookAmount(), new Cook(inventory, points));
+    _assignProducers(wReader.getCarpenterAmount(), new Carpenter(inventory, points));
+    _assignProducers(wReader.getArmourerAmount(), new Armourer(inventory, points));
 }
 
 void King::runKingdom() {

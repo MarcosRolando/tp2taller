@@ -29,7 +29,7 @@ private:
     void _spawnGatherers();
     void _assignGatherers(unsigned int amount);
     void _spawnProducers();
-    void _assignCooks();
+    void _assignProducers(unsigned int amount, Producer* producer);
     void _assignCarpenters();
     void _assignArmourers();
 };
