@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
 project(tp2taller)
 
+add_subdirectory(tests)
+
 add_executable(tp main.cpp WorkerReader.cpp WorkerReader.h
         FileException.cpp FileException.h King.cpp King.h ResourceReader.cpp
         ResourceReader.h Resource.h BlockingQueue.cpp BlockingQueue.h

@@ -7,6 +7,7 @@
 
 #include <exception>
 #include <iostream>
+#include <utility>
 
 const int NONEXISTENT_FILE = 1;
 const int BAD_FILE = 2;
@@ -16,7 +17,7 @@ private:
     std::string fileName;
     int eType;
 public:
-    explicit FileException(std::string fileName, int e) : fileName(fileName),
+    explicit FileException(std::string fileName, int e) : fileName(std::move(fileName)),
                                                             eType(e) {};
     void printError();
 };

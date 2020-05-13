@@ -82,10 +82,10 @@ void Inventory::doneAdding() {
 
 void Inventory::printStockLeft() {
     std::cout << "Recursos restantes:\n"
-                 "- Trigo: " << wheat << " \n"
-                                         "- Madera: " << wood << " \n"
-                                                                 "- Carbon: " << coal << " \n"
-                 "- Hierro: " << iron << " \n"
+                 "  - Trigo: " << wheat << "\n"
+                                         "  - Madera: " << wood << "\n"
+                                                                 "  - Carbon: " << coal << "\n"
+                 "  - Hierro: " << iron << "\n"
                  "\n";
 }
 
